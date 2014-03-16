@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 
 /**
- * Created by Nkechinyere on 3/16/14.
+ * Created by Imani Palmer on 3/16/14.
  */
 public class BackgroundService extends Service
 {
