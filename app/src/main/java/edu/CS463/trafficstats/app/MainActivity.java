@@ -2,6 +2,7 @@ package edu.CS463.trafficstats.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.widget.ToggleButton;
 import android.view.View;
@@ -32,8 +33,8 @@ public class MainActivity extends Activity
         {
             //Stop the service from here
             stopService(new Intent(this, BackgroundService.class));
-            finish();
-            System.exit(0);
+           // finish();
+            //System.exit(0);
         }
     }
 

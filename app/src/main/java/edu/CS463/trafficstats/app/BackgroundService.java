@@ -9,7 +9,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.Buffer;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -71,7 +75,7 @@ public class BackgroundService extends Service
         File file = new File("/proc/uid_stat/10071/tcp_snd");
         File file2 = new File ("/proc/uid_stat/10071/tcp_rcv");
 
-        StringBuilder text = new StringBuilder();
+        String text = "";
 
         try
         {
@@ -81,13 +85,28 @@ public class BackgroundService extends Service
 
             while((line = br.readLine()) != null && (line2 = br2.readLine()) != null)
             {
-                text.append(SystemClock.currentThreadTimeMillis()/1000 + " " + line + " " + line2 + " " + TrafficStats.getTotalRxPackets() + " " + TrafficStats.getTotalTxPackets() + "\n");
+                text += SystemClock.currentThreadTimeMillis()/1000 + " " + line + " " + line2 + " " + TrafficStats.getTotalRxPackets() + " " + TrafficStats.getTotalTxPackets() + "\n";
             }
         }
         catch (IOException e)
         {
             Log.d(this.toString(), e.toString());
         }
-        System.out.println(text);
+
+        try {
+            FileOutputStream fOut = openFileOutput("1.txt", MODE_APPEND);
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+            osw.write(text);
+            osw.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            Log.d(this.toString(), e.toString());
+        }
+        catch (IOException e)
+        {
+            Log.d(this.toString(), e.toString());
+        }
+
     }
 }
