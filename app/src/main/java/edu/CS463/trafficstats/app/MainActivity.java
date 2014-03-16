@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ToggleButton;
 import android.view.View;
+import android.content.Intent;
 
 
 public class MainActivity extends Activity
@@ -24,11 +25,13 @@ public class MainActivity extends Activity
 
         if (on)
         {
-            // Enable vibrate
+            //Start the service from here
+            startService(new Intent(this, BackgroundService.class));
         }
         else
         {
-            // Disable vibrate
+            //Stop the service from here
+            stopService(new Intent(this, BackgroundService.class));
         }
     }
 
