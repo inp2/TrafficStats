@@ -32,6 +32,8 @@ public class MainActivity extends Activity
         {
             //Stop the service from here
             stopService(new Intent(this, BackgroundService.class));
+            finish();
+            System.exit(0);
         }
     }
 
