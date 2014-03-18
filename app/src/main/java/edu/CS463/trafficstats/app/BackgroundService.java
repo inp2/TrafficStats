@@ -57,7 +57,7 @@ public class BackgroundService extends Service
 
         };
 
-        timer.scheduleAtFixedRate(timerTask, 0, 1);
+        timer.scheduleAtFixedRate(timerTask, 1000, 100);
 
     }
 
@@ -85,7 +85,7 @@ public class BackgroundService extends Service
 
             while((line = br.readLine()) != null && (line2 = br2.readLine()) != null)
             {
-                text += SystemClock.currentThreadTimeMillis()/1000 + " " + line + " " + line2 + " " + TrafficStats.getTotalRxPackets() + " " + TrafficStats.getTotalTxPackets() + "\n";
+                text += SystemClock.currentThreadTimeMillis()/1000 + " " + line2 + " " + line + " " + TrafficStats.getTotalRxPackets() + " " + TrafficStats.getTotalTxPackets() + "\n";
             }
         }
         catch (IOException e)
