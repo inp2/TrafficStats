@@ -1,0 +1,1 @@
+This is an Android application that is able to monitor the traffic statistics of other applications. This application demonstrates possible weak points in the Android security model and operating system.
